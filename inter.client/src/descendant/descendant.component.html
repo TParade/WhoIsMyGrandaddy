@@ -1,0 +1,48 @@
+<!-- app.component.html -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="searchIdNumber" placeholder="Enter ID Number" class="form-control">
+        <div class="input-group-append">
+          <button (click)="search()" class="btn btn-primary">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <h1 *ngIf="loading" >Loading...</h1>
+
+  <div *ngIf="!loading"  class="mat-tree example-tree">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree" #treeSelector>
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        {{node.name}}  {{node.surname}} - {{node.birthDate}}
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="mat-tree-node">
+          <button mat-icon-button matTreeNodeToggle
+                  [attr.aria-label]="'Toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          {{node.name}} {{node.surname}} - {{node.birthDate}}
+        </div>
+        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+             role="group">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </div>
+      </mat-nested-tree-node>
+    </mat-tree>
+  </div>
+
+  <hr *ngIf="descendants.length > 0" />
+
+
+  <div class="button-container" *ngIf="descendants.length > 0">
+    <button (click)="toggleLoadMore()" [disabled]="!loadMoreEnabled || loading" class="btn btn-primary">Load More</button>
+  </div>
+</div>
+

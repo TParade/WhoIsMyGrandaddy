@@ -1,0 +1,46 @@
+/* app.component.css */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.input-container {
+  margin-bottom: 10px;
+}
+
+.mat-tree {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.mat-tree-node {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+  .mat-tree-node button {
+    margin-right: 5px;
+  }
+
+  .mat-tree-node .mat-icon {
+    font-size: 16px;
+  }
+
+.mat-nested-tree-node {
+  padding-left: 20px;
+}
+
+.example-tree-invisible {
+  display: none;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+.loading-message {
+  margin-top: 20px;
+}

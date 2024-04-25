@@ -1,0 +1,36 @@
+
+<div class="row justify-content-center">
+  <div class="col-5">
+    <div class="input-group mb-3">
+      <input type="text" [(ngModel)]="searchIdNumber" placeholder="Enter ID Number" class="form-control">
+      <div class="input-group-append">
+        <button (click)="search()" class="btn btn-primary">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+
+
+<table *ngIf="roots">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth Date</th>
+      <th>Identity Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let root of rootParents">
+      <td>{{root.id}}</td>
+      <td>{{root.name}}</td>
+      <td>{{root.surname}}</td>
+      <td>{{root.birthDate}}</td>
+      <td>{{root.identityNumber}}</td>
+    </tr>
+  </tbody>
+</table>
+
+

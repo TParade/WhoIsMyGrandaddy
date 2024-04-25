@@ -1,0 +1,9 @@
+@Inter.Server_HostAddress = http://localhost:5242
+
+GET {{Inter.Server_HostAddress}}/api/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{Inter.Server_HostAddress}}/api/rootascendant/
+Accept: application/json
