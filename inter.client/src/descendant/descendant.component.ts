@@ -48,6 +48,7 @@ export class DescendantComponent implements OnInit {
     let url = `/api/descendant?maxGeneration=${this.maxGeneration}`
       + `&identityNumber=${this.searchIdNumber}`;
 
+      //TODO:Fix
     this.http.get<Person[]>(url).subscribe(
       result => {
         this.descendants = result;
@@ -60,6 +61,7 @@ export class DescendantComponent implements OnInit {
       },
       error => {
         console.error(error);
+        alert(error.message);
         this.loading = false;
       }
     );

@@ -33,4 +33,8 @@
     <None Include="efpt.config.json.user" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\RequestData\" />
+  </ItemGroup>
+
 </Project>

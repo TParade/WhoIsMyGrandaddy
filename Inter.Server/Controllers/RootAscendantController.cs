@@ -18,24 +18,33 @@ namespace Inter.Server.Controllers
         [HttpGet(Name = "GetRootAscendant")]
         public async Task<IEnumerable<RootPersonData>> Get(string identityNumber)
         {
-            MyGranddaddyContext db = new MyGranddaddyContext();
-
-            var result = await db.Procedures.FamilyTreeRootGetAsync(identityNumber);
-
-            var personData = result.Select(n => new RootPersonData()
+            try
             {
-                Id = n.Id.Value,
-                FatherId = n.FatherId,
-                MotherId = n.MotherId,
-                Name = n.Name,
-                Surname = n.Surname,
-                BirthDate = n.BirthDate.Value,
-                IdentityNumber = n.IdentityNumber,
-                Generation = n.Generation.Value,
-            }).ToList();
+                MyGranddaddyContext db = new MyGranddaddyContext();
+
+                var result = await db.Procedures.FamilyTreeRootGetAsync(identityNumber);
+
+                var personData = result.Select(n => new RootPersonData()
+                {
+                    Id = n.Id.Value,
+                    FatherId = n.FatherId,
+                    MotherId = n.MotherId,
+                    Name = n.Name,
+                    Surname = n.Surname,
+                    BirthDate = n.BirthDate.Value,
+                    IdentityNumber = n.IdentityNumber,
+                    Generation = n.Generation.Value,
+                }).ToList();
 
 
-            return personData;
+                return personData;
+            }
+            catch (Exception ex)
+            {
+
+                _logger.LogError(ex, "Error retrieving data");
+                return new List<RootPersonData>();
+            }
         }
     }
 }

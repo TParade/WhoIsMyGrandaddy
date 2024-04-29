@@ -34,6 +34,7 @@ export class RootComponent {
     this.loading = true;
     let url = `/api/rootascendant?identityNumber=${this.searchIdNumber}`;
 
+      //TODO:Fix
     this.http.get<Person[]>(url).subscribe(
       result => {
         this.roots = result;
