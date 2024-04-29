@@ -1,21 +1,21 @@
---USE [master]
---GO
---/****** Object:  Database [MyGranddaddy]    Script Date: 2024/04/29 12:57:31 ******/
---CREATE DATABASE [MyGranddaddy]
--- CONTAINMENT = NONE
--- ON  PRIMARY 
---( NAME = N'MyGranddaddy', FILENAME = N'H:\Program Files\Microsoft SQL Server\MSSQL15.EXCLR8\MSSQL\DATA\MyGranddaddy.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
--- LOG ON 
---( NAME = N'MyGranddaddy_log', FILENAME = N'H:\Program Files\Microsoft SQL Server\MSSQL15.EXCLR8\MSSQL\DATA\MyGranddaddy_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
--- WITH CATALOG_COLLATION = DATABASE_DEFAULT
---GO
---ALTER DATABASE [MyGranddaddy] SET COMPATIBILITY_LEVEL = 150
---GO
---IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
---begin
---EXEC [MyGranddaddy].[dbo].[sp_fulltext_database] @action = 'enable'
---end
---GO
+USE [master]
+GO
+/****** Object:  Database [MyGranddaddy]    Script Date: 2024/04/29 12:57:31 ******/
+CREATE DATABASE [MyGranddaddy]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'MyGranddaddy', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.EXCLR8\MSSQL\DATA\MyGranddaddy.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'MyGranddaddy_log', FILENAME = 'C:\Program Files\Microsoft SQL Server\MSSQL15.EXCLR8\MSSQL\DATA\MyGranddaddy_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [MyGranddaddy] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [MyGranddaddy].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
 ALTER DATABASE [MyGranddaddy] SET ANSI_NULL_DEFAULT OFF 
 GO
 ALTER DATABASE [MyGranddaddy] SET ANSI_NULLS OFF 
